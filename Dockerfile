@@ -76,7 +76,8 @@ RUN set -ex \
   # smoke test
   && yarn --version
 
-RUN npm install -g @aws-amplify/cli --verbose --unsafe-perm=true
+ENV AMPLIFY_VERSION ^4.32.1
+RUN npm install -g @aws-amplify/cli@$AMPLIFY_VERSION --verbose --unsafe-perm=true
 
 
 ENTRYPOINT [ "bash", "-c" ]
