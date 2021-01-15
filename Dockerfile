@@ -16,7 +16,7 @@ RUN yum -y update && \
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-ENV NODE_VERSION 12.18.3
+ENV NODE_VERSION 12.20.1
 
 RUN ARCH= && arch="$(arch)" \
   && case "${arch##*-}" in \
@@ -55,7 +55,7 @@ RUN ARCH= && arch="$(arch)" \
   && node --version \
   && npm --version
 
-ENV YARN_VERSION 1.22.4
+ENV YARN_VERSION 1.22.5
 
 RUN set -ex \
   && for key in \
@@ -76,7 +76,7 @@ RUN set -ex \
   # smoke test
   && yarn --version
 
-ENV AMPLIFY_VERSION ^4.32.1
+ENV AMPLIFY_VERSION ^4.41.2
 RUN npm install -g @aws-amplify/cli@$AMPLIFY_VERSION --verbose --unsafe-perm=true
 
 
