@@ -1,9 +1,15 @@
 FROM amazonlinux:2
 
 
-# Install Curl, Git, OpenSSL (AWS Amplify requirements) and tar
+# Install dev and build packages
 RUN yum -y update && \
     yum -y install \
+    autoconf-archive \
+    automake \
+    libtool \
+    libpng \
+    libpng-devel \
+    nasm \
     shadow-utils \
     patch \
     make \
