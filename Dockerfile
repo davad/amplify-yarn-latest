@@ -16,7 +16,7 @@ RUN yum -y update && \
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-ENV NODE_VERSION 12.20.1
+ENV NODE_VERSION 14.16.1
 
 RUN ARCH= && arch="$(arch)" \
   && case "${arch##*-}" in \
@@ -55,7 +55,7 @@ RUN ARCH= && arch="$(arch)" \
   && node --version \
   && npm --version
 
-ENV YARN_VERSION 1.22.5
+ENV YARN_VERSION 1.22.15
 
 RUN set -ex \
   && for key in \
