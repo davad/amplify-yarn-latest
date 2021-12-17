@@ -38,8 +38,16 @@ RUN curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.re
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-ENV AMPLIFY_VERSION ^4.41.2
+ENV AMPLIFY_VERSION ^4.46
 RUN npm install -g @aws-amplify/cli@$AMPLIFY_VERSION --verbose --unsafe-perm=true
 
+# Install latest AWS CLI
+RUN yum install -y unzip \
+        && yum clean all \
+        && rm -rf /var/cache/yum \
+        && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+        && unzip awscliv2.zip \
+        && ./aws/install \
+        && rm -rf awscliv2.zip aws
 
 ENTRYPOINT [ "bash", "-c" ]
