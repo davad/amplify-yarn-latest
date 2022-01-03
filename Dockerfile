@@ -38,7 +38,7 @@ RUN curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.re
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-ENV AMPLIFY_VERSION ^4.46
+ARG AMPLIFY_VERSION ^4.46
 RUN npm install -g @aws-amplify/cli@$AMPLIFY_VERSION --verbose --unsafe-perm=true
 
 # Install latest AWS CLI
